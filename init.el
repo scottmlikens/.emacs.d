@@ -20,3 +20,4 @@
 		      :repo "yoshiki/yaml-mode"
 		      )
   )
+(straight-use-package 'ruby-mode)
