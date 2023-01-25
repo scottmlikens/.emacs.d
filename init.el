@@ -14,3 +14,9 @@
  `(org :type git
 	       :repo "https://git.savannah.gnu.org/git/emacs/org-mode.git"
 	       :local-repo nil))
+(straight-use-package 
+  '(yaml-mode
+		      :type git
+		      :repo "yoshiki/yaml-mode"
+		      )
+  )
