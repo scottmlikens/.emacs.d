@@ -21,3 +21,19 @@
 		      )
   )
 (straight-use-package 'ruby-mode)
+(straight-use-package 'dockerfile-mode)
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq inhibit-startup-message t)
+(transient-mark-mode 1)
+
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(delete-selection-mode t)
+(blink-cursor-mode t)
+(show-paren-mode t)
+(column-number-mode t)
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
+(set-frame-font "Menlo-16")
+(load-theme 'tango)
