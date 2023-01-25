@@ -22,6 +22,11 @@
   )
 (straight-use-package 'ruby-mode)
 (straight-use-package 'dockerfile-mode)
+(straight-use-package 'whitespace-cleanup-mode)
+(add-hook 'ruby-mode-hook 'whitespace-cleanup-mode)
+
+;; Other Settings
+
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq inhibit-startup-message t)
