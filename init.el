@@ -10,10 +10,7 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-(straight-use-package
- `(org :type git
-	       :repo "https://git.savannah.gnu.org/git/emacs/org-mode.git"
-	       :local-repo nil))
+(straight-use-package 'org-mode)
 (straight-use-package 
   '(yaml-mode
 		      :type git
@@ -24,8 +21,24 @@
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'whitespace-cleanup-mode)
 (add-hook 'ruby-mode-hook 'whitespace-cleanup-mode)
+(straight-use-package 'terraform-mode)
+(straight-use-package 'lsp-mode)
+
+(require 'lsp)
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-stdio-connection '("/usr/bin/terraform-ls" "serve"))
+                  :major-modes '(terraform-mode)
+                  :server-id 'terraform-ls))
+(setq read-process-output-max (* 1024 1024))
+(add-hook 'terraform-mode-hook #'lsp)
+(add-to-list 'load-path "/home/slikens/.emacs.d/straight/repos/lsp-mode/clients")
+(require 'lsp-terraform)
+(straight-use-package 'rust-mode)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 ;; Other Settings
+
+(setq package-enable-at-startup nil)
 
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
